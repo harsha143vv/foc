@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    const int min_employees = 3;
+    const int customers_per_employee = 20;
+    const int hours_per_day = 24;
+    const int num_days = 14;
+
+    int total_customers[hours_per_day] = {0};
+    int total_employees[hours_per_day] = {0};
+
+    // Input the number of customers for each hour over 14 days
+    for (int day = 1; day <= num_days; day++) {
+        printf("Day %d:\n", day);
+        for (int hour = 0; hour < hours_per_day; hour++) {
+            printf("Enter the number of customers for hour %d: ", hour + 1);
+            int num_customers;
+            scanf("%d", &num_customers);
+            total_customers[hour] += num_customers;
+        }
+    }
+
+    // Calculate the needed number of employees per hour
+    for (int hour = 0; hour < hours_per_day; hour++) {
+        int average_customers = total_customers[hour] / num_days;
+        int needed_employees = min_employees + (average_customers / customers_per_employee);
+        total_employees[hour] = needed_employees;
+    }
+
+    // Output the needed number of employees per hour
+    printf("\nNeeded Number of Employees per Hour:\n");
+    for (int hour = 0; hour < hours_per_day; hour++) {
+        printf("Hour %d: %d employees\n", hour + 1, total_employees[hour]);
+    }
+
+    return 0;
+}
