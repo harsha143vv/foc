@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int age;
+    double ticketPrice;
+
+    // Input the age of the person
+    printf("Enter the age of the person: ");
+    scanf("%d", &age);
+
+    // Calculate the ticket charge based on age
+    if (age >= 55) {
+        ticketPrice = 10.00;
+    } else if (age >= 21 && age <= 54) {
+        ticketPrice = 15.00;
+    } else if (age >= 13 && age <= 20) {
+        ticketPrice = 10.00;
+    } else if (age >= 3 && age <= 12) {
+        ticketPrice = 5.00;
+    } else {
+        ticketPrice = 0.00; // Under 3, free admission
+    }
+
+    // Output the ticket charge
+    printf("Ticket Price: $%.2lf\n", ticketPrice);
+
+    return 0;
+}
