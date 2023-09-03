@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <math.h>
+
+double calculateCosine(double x, int n) {
+    double cosine = 1.0;
+    int sign = -1;
+    int fact = 2;
+
+    for (int i = 2; i <= n; i += 2) {
+        cosine += sign * pow(x, i) / fact;
+        sign = -sign;  // Change the sign for the next term
+        fact *= (i + 1) * (i + 2);  // Update the factorial
+    }
+
+    return cosine;
+}
+
+int main() {
+    double x;
+    int n;
+
+    printf("Enter the value of x in radians: ");
+    scanf("%lf", &x);
+
+    printf("Enter the number of terms (n) in the series: ");
+    scanf("%d", &n);
+
+    double result = calculateCosine(x, n);
+    printf("cos(%lf) = %lf\n", x, result);
+
+    return 0;
+}
