@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+int main() {
+    const int num_salespeople = 10;
+    const int num_days = 7;
+
+    double sales[num_salespeople][num_days];
+
+    // Input sales data
+    for (int salesperson = 0; salesperson < num_salespeople; salesperson++) {
+        printf("Enter sales data for Salesperson %d:\n", salesperson + 1);
+        for (int day = 0; day < num_days; day++) {
+            printf("Day %d: $", day + 1);
+            scanf("%lf", &sales[salesperson][day]);
+        }
+    }
+
+    // Calculate and display average sales for each salesperson for the week
+    printf("\nAverage Sales for Each Salesperson for the Week:\n");
+    for (int salesperson = 0; salesperson < num_salespeople; salesperson++) {
+        double total_sales = 0.0;
+        for (int day = 0; day < num_days; day++) {
+            total_sales += sales[salesperson][day];
+        }
+        double average_sales = total_sales / num_days;
+        printf("Salesperson %d: $%.2lf\n", salesperson + 1, average_sales);
+    }
+
+    // Calculate and display total sales for each day and for the week
+    double total_sales_by_day[num_days] = {0.0};
+    for (int day = 0; day < num_days; day++) {
+        for (int salesperson = 0; salesperson < num_salespeople; salesperson++) {
+            total_sales_by_day[day] += sales[salesperson][day];
+        }
+    }
+
+    printf("\nTotal Sales for Each Day of the Week:\n");
+    for (int day = 0; day < num_days; day++) {
+        printf("Day %d: $%.2lf\n", day + 1, total_sales_by_day[day]);
+    }
+
+    double total_weekly_sales = 0.0;
+    for (int salesperson = 0; salesperson < num_salespeople; salesperson++) {
+        for (int day = 0; day < num_days; day++) {
+            total_weekly_sales += sales[salesperson][day];
+        }
+    }
+
+    printf("\nTotal Sales for the Week: $%.2lf\n", total_weekly_sales);
+
+    return 0;
+}
