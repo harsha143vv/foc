@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    int originalNumber, sumOfDigits, checkDigit, newNumber;
+
+    // Input a four-digit number
+    printf("Enter a four-digit number: ");
+    scanf("%d", &originalNumber);
+
+    // Calculate the sum of the digits
+    sumOfDigits = (originalNumber / 1000) % 10 + (originalNumber / 100) % 10 + (originalNumber / 10) % 10 + originalNumber % 10;
+
+    // Calculate the check digit to make the sum of digits even
+    checkDigit = (sumOfDigits % 2 == 0) ? 0 : 1;
+
+    // Calculate the new number
+    newNumber = originalNumber * 10 + checkDigit;
+
+    // Output the original number and the new number
+    printf("Original Number: %d\n", originalNumber);
+    printf("New Number: %d\n", newNumber);
+
+    return 0;
+}
