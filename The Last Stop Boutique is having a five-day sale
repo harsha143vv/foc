@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() {
+    double original_price, sale_price;
+
+    // Input the original price
+    printf("Enter the original price of the item: $");
+    scanf("%lf", &original_price);
+
+    sale_price = original_price;
+
+    // Calculate and print the sale price for each of the five days
+    for (int day = 1; day <= 5; day++) {
+        printf("Day %d: Sale Price is $%.2lf\n", day, sale_price);
+        sale_price *= 0.90;  // Apply a 10% discount
+    }
+
+    return 0;
+}
