@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    unsigned long long sum = 0; // Use unsigned long long to handle large sums
+
+    printf("Enter a positive integer (n): ");
+    scanf("%d", &n);
+
+    // Check for non-positive input
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+    } else {
+        for (int i = 1; i <= n; i++) {
+            sum += (unsigned long long)i * i * i; // Calculate and add the cube of each number
+        }
+
+        printf("The sum of the cubes of the first %d natural numbers is %llu\n", n, sum);
+    }
+
+    return 0;
+}
