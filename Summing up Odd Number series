@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    int sum = 0;
+
+    printf("Enter a positive integer (n): ");
+    scanf("%d", &n);
+
+    // Check for non-positive input
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+    } else {
+        for (int i = 1; i <= n; i += 2) {
+            sum += i; // Add the odd number to the sum
+        }
+
+        printf("The sum of the odd number series 1 + 3 + 5 + ... + %d is %d\n", n, sum);
+    }
+
+    return 0;
+}
