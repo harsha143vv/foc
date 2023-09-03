@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Enter a positive integer (n): ");
+    scanf("%d", &n);
+
+    // Check for non-positive input
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+    } else {
+        // Calculate the sum using the formula for the sum of squares
+        unsigned long long sum = (n * (n + 1) * (2 * n + 1)) / 6;
+
+        printf("The sum of the sequence 12 + 22 + 32 + ... + %d^2 is %llu\n", n, sum);
+    }
+
+    return 0;
+}
