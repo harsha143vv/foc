@@ -1,0 +1,63 @@
+#include <stdio.h>
+
+#define MAX_ALUMNI 95
+#define MAX_STRING_LENGTH 50
+
+struct Alumni {
+    int age;
+    char gender;
+    char marital_status;
+    char major[MAX_STRING_LENGTH];
+    double salary;
+};
+
+int main() {
+    struct Alumni alumni[MAX_ALUMNI];
+    int num_alumni;
+
+    // Input alumni data
+    printf("Enter the number of alumni: ");
+    scanf("%d", &num_alumni);
+
+    if (num_alumni > MAX_ALUMNI) {
+        printf("Error: Number of alumni exceeds the maximum limit.\n");
+        return 1;
+    }
+
+    printf("Enter alumni data (age gender marital_status major salary):\n");
+    for (int i = 0; i < num_alumni; i++) {
+        scanf("%d %c %c %s %lf",
+              &alumni[i].age,
+              &alumni[i].gender,
+              &alumni[i].marital_status,
+              alumni[i].major,
+              &alumni[i].salary);
+    }
+
+    // Input the sets of items for cross-tabulation
+    char item1, item2;
+    printf("Enter two sets of items for cross-tabulation (e.g., AG for age-gender): ");
+    scanf(" %c%c", &item1, &item2);
+
+    // Calculate the average salary based on the selected items
+    double total_salary = 0.0;
+    int num_matches = 0;
+
+    for (int i = 0; i < num_alumni; i++) {
+        char selected_items[3] = {alumni[i].age, alumni[i].gender, alumni[i].marital_status};
+
+        if (item1 == selected_items[0] && item2 == selected_items[1]) {
+            total_salary += alumni[i].salary;
+            num_matches++;
+        }
+    }
+
+    if (num_matches > 0) {
+        double average_salary = total_salary / num_matches;
+        printf("Average Salary for %c-%c: $%.2lf\n", item1, item2, average_salary);
+    } else {
+        printf("No matching records found for the selected items.\n");
+    }
+
+    return 0;
+}
