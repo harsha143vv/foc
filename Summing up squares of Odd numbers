@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    unsigned long long sum = 0; // Use unsigned long long to handle large sums
+
+    printf("Enter a positive integer (n): ");
+    scanf("%d", &n);
+
+    // Check for non-positive input
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+    } else {
+        for (int i = 1; i <= n; i++) {
+            if (i % 2 != 0) { // Check if the number is odd
+                sum += (unsigned long long)i * i; // Calculate and add the square of the odd number
+            }
+        }
+
+        printf("The sum of the squares of odd numbers from 1 to %d is %llu\n", n, sum);
+    }
+
+    return 0;
+}
+
