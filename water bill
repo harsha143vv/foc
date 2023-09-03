@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    double cubic_feet, bill_amount;
+
+    // Input the cubic feet of water used
+    printf("Enter the cubic feet of water used: ");
+    scanf("%lf", &cubic_feet);
+
+    // Calculate the water bill
+    if (cubic_feet <= 1000) {
+        bill_amount = 15.00;
+    } else if (cubic_feet <= 2000) {
+        double excess_cubic_feet = cubic_feet - 1000;
+        bill_amount = 15.00 + (0.0175 * excess_cubic_feet);
+    } else if (cubic_feet <= 3000) {
+        double excess_cubic_feet = cubic_feet - 2000;
+        bill_amount = 15.00 + (0.0175 * 1000) + (0.02 * excess_cubic_feet);
+    } else {
+        double excess_cubic_feet = cubic_feet - 3000;
+        bill_amount = 15.00 + (0.0175 * 1000) + (0.02 * 1000) + (70.00 * excess_cubic_feet);
+    }
+
+    // Output the water bill
+    printf("Water bill: $%.2lf\n", bill_amount);
+
+    return 0;
+}
