@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    const int num_students = 25;
+    const int num_tests = 5; // You can change this to the desired number of tests
+
+    int grades[num_students][num_tests];
+
+    // Input test grades for each student
+    printf("Enter test grades for each student:\n");
+    for (int student = 0; student < num_students; student++) {
+        printf("Student %d:\n", student + 1);
+        for (int test = 0; test < num_tests; test++) {
+            printf("Test %d: ", test + 1);
+            scanf("%d", &grades[student][test]);
+        }
+    }
+
+    // Input student number and test number to retrieve grade
+    int student_number, test_number;
+    printf("\nEnter student number (1 to %d): ", num_students);
+    scanf("%d", &student_number);
+    printf("Enter test number (1 to %d): ", num_tests);
+    scanf("%d", &test_number);
+
+    // Check if student_number and test_number are within valid range
+    if (student_number < 1 || student_number > num_students || test_number < 1 || test_number > num_tests) {
+        printf("Invalid student number or test number. Please enter valid values.\n");
+    } else {
+        int student_index = student_number - 1;
+        int test_index = test_number - 1;
+        int grade = grades[student_index][test_index];
+        printf("Grade for Student %d on Test %d: %d\n", student_number, test_number, grade);
+    }
+
+    return 0;
+}
