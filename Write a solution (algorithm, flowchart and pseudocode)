@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main() {
+    double total_miles = 0.0;
+    double total_gallons = 0.0;
+    double odometer_start, odometer_end, gallons_filled, miles_driven, average_mpg;
+
+    printf("Enter data for six fillups:\n");
+
+    for (int i = 1; i <= 6; i++) {
+        printf("Fillup %d:\n", i);
+        printf("Starting Odometer Reading: ");
+        scanf("%lf", &odometer_start);
+
+        printf("Ending Odometer Reading: ");
+        scanf("%lf", &odometer_end);
+
+        printf("Gallons Filled: ");
+        scanf("%lf", &gallons_filled);
+
+        miles_driven = odometer_end - odometer_start;
+        average_mpg = miles_driven / gallons_filled;
+
+        total_miles += miles_driven;
+        total_gallons += gallons_filled;
+
+        printf("MPG for Fillup %d: %.2lf\n", i, average_mpg);
+    }
+
+    average_mpg = total_miles / total_gallons;
+
+    printf("\nAverage MPG for all fillups: %.2lf\n", average_mpg);
+
+    return 0;
+}
