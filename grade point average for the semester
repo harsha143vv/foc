@@ -1,0 +1,63 @@
+#include <stdio.h>
+
+int main() {
+    char letter_grade;
+    int credit_units;
+    double total_grade_points = 0.0;
+    int total_credit_units = 0;
+
+    while (1) {
+        char course_name[50];
+
+        // Input the course name
+        printf("Enter the course name (or type 'done' to finish input): ");
+        scanf("%s", course_name);
+
+        // Check for the trip value to stop input
+        if (strcmp(course_name, "done") == 0) {
+            break;
+        }
+
+        // Input the letter grade and credit units
+        printf("Enter the letter grade for %s: ", course_name);
+        scanf(" %c", &letter_grade);
+
+        printf("Enter the credit units for %s: ", course_name);
+        scanf("%d", &credit_units);
+
+        // Calculate grade points based on letter grades
+        double grade_points;
+        switch (letter_grade) {
+            case 'A':
+                grade_points = 4.0;
+                break;
+            case 'B':
+                grade_points = 3.0;
+                break;
+            case 'C':
+                grade_points = 2.0;
+                break;
+            case 'D':
+                grade_points = 1.0;
+                break;
+            case 'F':
+                grade_points = 0.0;
+                break;
+            default:
+                grade_points = 0.0; // Default to 0 for invalid grades
+                break;
+        }
+
+        // Calculate total grade points and credit units
+        total_grade_points += grade_points * credit_units;
+        total_credit_units += credit_units;
+    }
+
+    // Calculate the GPA
+    double gpa = (total_credit_units > 0) ? (total_grade_points / total_credit_units) : 0.0;
+
+    // Output the GPA
+    printf("Your GPA for the semester is: %.2lf\n", gpa);
+
+    return 0;
+}
