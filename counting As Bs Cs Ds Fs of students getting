@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int main() {
+    int numStudents = 200;
+    int numAs = 0, numBs = 0, numCs = 0, numDs = 0, numFs = 0;
+
+    printf("Enter the number grade and student number for each of the %d students:\n", numStudents);
+
+    for (int i = 1; i <= numStudents; i++) {
+        int studentNumber, numberGrade;
+        char letterGrade;
+
+        // Input student number and number grade
+        printf("Student %d - Enter student number: ", i);
+        scanf("%d", &studentNumber);
+
+        printf("Student %d - Enter number grade: ", i);
+        scanf("%d", &numberGrade);
+
+        // Determine letter grade based on the grading scale
+        if (numberGrade >= 90 && numberGrade <= 100) {
+            letterGrade = 'A';
+            numAs++;
+        } else if (numberGrade >= 78 && numberGrade <= 89) {
+            letterGrade = 'B';
+            numBs++;
+        } else if (numberGrade >= 65 && numberGrade <= 77) {
+            letterGrade = 'C';
+            numCs++;
+        } else if (numberGrade >= 50 && numberGrade <= 64) {
+            letterGrade = 'D';
+            numDs++;
+        } else {
+            letterGrade = 'F';
+            numFs++;
+        }
+
+        // Output student information
+        printf("Student Number: %d, Number Grade: %d, Letter Grade: %c\n", studentNumber, numberGrade, letterGrade);
+    }
+
+    // Output the total number of each letter grade
+    printf("Total Number of As: %d\n", numAs);
+    printf("Total Number of Bs: %d\n", numBs);
+    printf("Total Number of Cs: %d\n", numCs);
+    printf("Total Number of Ds: %d\n", numDs);
+    printf("Total Number of Fs: %d\n", numFs);
+
+    return 0;
+}
