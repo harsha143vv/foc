@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <math.h>
+
+double calculateSine(double x, int n) {
+    double sine = 0.0;
+    int sign = 1;
+    int fact = 1;
+
+    for (int i = 1; i <= n; i += 2) {
+        sine += sign * pow(x, i) / fact;
+        sign = -sign;  // Change the sign for the next term
+        fact *= (i + 1) * (i + 2);  // Update the factorial
+    }
+
+    return sine;
+}
+
+int main() {
+    double x;
+    int n;
+
+    printf("Enter the value of x in radians: ");
+    scanf("%lf", &x);
+
+    printf("Enter the number of terms (n) in the series: ");
+    scanf("%d", &n);
+
+    double result = calculateSine(x, n);
+    printf("sin(%lf) = %lf\n", x, result);
+
+    return 0;
+}
