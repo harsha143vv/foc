@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+#define NUM_DAYS 14
+
+int main() {
+    double wind_speeds[NUM_DAYS];
+    double total_wind_speed = 0.0;
+    double average_wind_speed = 0.0;
+    double highest_wind_speed = 0.0;
+    double lowest_wind_speed = 9999.0; // Initialize with a high value
+
+    int day_highest = 0;
+    int day_lowest = 0;
+
+    // Input daily wind speeds
+    printf("Enter the daily wind speeds for two weeks:\n");
+    for (int day = 0; day < NUM_DAYS; day++) {
+        printf("Day %d: ", day + 1);
+        scanf("%lf", &wind_speeds[day]);
+
+        // Calculate total wind speed
+        total_wind_speed += wind_speeds[day];
+
+        // Find the day with the highest wind speed
+        if (wind_speeds[day] > highest_wind_speed) {
+            highest_wind_speed = wind_speeds[day];
+            day_highest = day;
+        }
+
+        // Find the day with the lowest wind speed
+        if (wind_speeds[day] < lowest_wind_speed) {
+            lowest_wind_speed = wind_speeds[day];
+            day_lowest = day;
+        }
+    }
+
+    // Calculate average wind speed
+    average_wind_speed = total_wind_speed / NUM_DAYS;
+
+    // Output results
+    printf("\nAverage Wind Speed over Two Weeks: %.2lf\n", average_wind_speed);
+    printf("Day with Highest Wind Speed (Day %d): %.2lf\n", day_highest + 1, highest_wind_speed);
+    printf("Day with Lowest Wind Speed (Day %d): %.2lf\n", day_lowest + 1, lowest_wind_speed);
+
+    // Calculate and output the difference between the highest wind speed and each day's average wind speed
+    printf("\nDifference between Highest Wind Speed and Daily Average:\n");
+    for (int day = 0; day < NUM_DAYS; day++) {
+        double difference = highest_wind_speed - average_wind_speed;
+        printf("Day %d: %.2lf\n", day + 1, difference);
+    }
+
+    return 0;
+}
