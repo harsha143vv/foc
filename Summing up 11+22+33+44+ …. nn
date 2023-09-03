@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    unsigned long long sum = 0; // Use unsigned long long to handle large sums
+
+    printf("Enter a positive integer (n): ");
+    scanf("%d", &n);
+
+    // Check for non-positive input
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+    } else {
+        for (int i = 1; i <= n; i++) {
+            int term = i * 11; // Generate the next term (11, 22, 33, ...)
+            sum += term;       // Add the term to the sum
+        }
+
+        printf("The sum of the sequence 11 + 22 + 33 + ... + %d%d is %llu\n", n, n, sum);
+    }
+
+    return 0;
+}
