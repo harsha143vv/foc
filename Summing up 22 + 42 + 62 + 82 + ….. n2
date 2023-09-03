@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    unsigned long long sum = 0; // Use unsigned long long to handle large sums
+
+    printf("Enter a positive integer (n): ");
+    scanf("%d", &n);
+
+    // Check for non-positive input
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+    } else {
+        for (int i = 2; i <= n; i += 2) {
+            int term = i * i; // Generate the next term (even number squared)
+            sum += term;      // Add the term to the sum
+        }
+
+        printf("The sum of the sequence 22 + 42 + 62 + ... + %d^2 is %llu\n", n, sum);
+    }
+
+    return 0;
+}
