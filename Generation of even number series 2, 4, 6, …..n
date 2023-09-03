@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Enter a positive integer (n): ");
+    scanf("%d", &n);
+
+    // Check for non-positive input
+    if (n < 2) {
+        printf("Please enter a positive integer greater than or equal to 2.\n");
+    } else {
+        printf("Even Number Series up to %d:\n", n);
+
+        // Use a loop to generate and print even numbers
+        for (int i = 2; i <= n; i += 2) {
+            printf("%d", i);
+
+            // Print a comma and space if it's not the last number
+            if (i < n - 1) {
+                printf(", ");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
