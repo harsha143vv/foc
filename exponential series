@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+double calculateExponential(double x, int n) {
+    double exponential = 1.0;
+    double term = 1.0;
+
+    for (int i = 1; i <= n; i++) {
+        term *= (-x) / i;
+        exponential += term;
+    }
+
+    return exponential;
+}
+
+int main() {
+    double x;
+    int n;
+
+    printf("Enter the value of x: ");
+    scanf("%lf", &x);
+
+    printf("Enter the number of terms (n) in the series: ");
+    scanf("%d", &n);
+
+    double result = calculateExponential(x, n);
+    printf("e^(-%lf) = %lf\n", x, result);
+
+    return 0;
+}
