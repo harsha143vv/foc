@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    printf("Enter a positive integer (n): ");
+    scanf("%d", &n);
+
+    // Check for non-positive input
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+    } else {
+        printf("Odd Number Series up to %d:\n", n);
+
+        // Use a loop to generate and print odd numbers
+        for (int i = 1; i <= n; i += 2) {
+            printf("%d", i);
+
+            // Print a comma and space if it's not the last number
+            if (i < n - 1) {
+                printf(", ");
+            }
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
