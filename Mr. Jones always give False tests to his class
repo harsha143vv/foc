@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+int main() {
+    const int max_class_size = 35;
+    const int num_questions = 20;
+
+    int correct_scores[max_class_size];
+    int student_ids[max_class_size];
+    int num_students;
+
+    printf("Enter the number of students (up to %d): ", max_class_size);
+    scanf("%d", &num_students);
+
+    if (num_students > max_class_size) {
+        printf("Error: Number of students exceeds the maximum class size.\n");
+        return 1;
+    }
+
+    // Input correct scores
+    printf("Enter the correct scores for each question (out of %d):\n", num_questions);
+    for (int i = 0; i < num_questions; i++) {
+        scanf("%d", &correct_scores[i]);
+    }
+
+    // Input student data and calculate grades
+    int best_score = 0;
+    for (int i = 0; i < num_students; i++) {
+        printf("Enter student ID for student %d: ", i + 1);
+        scanf("%d", &student_ids[i]);
+
+        int num_correct;
+        printf("Enter number correct for student %d: ", i + 1);
+        scanf("%d", &num_correct);
+
+        if (num_correct > best_score) {
+            best_score = num_correct; // Update the best score
+        }
+
+        char grade;
+        if (num_correct >= best_score - 2) {
+            grade = 'A';
+        } else if (num_correct >= best_score - 4) {
+            grade = 'B';
+        } else if (num_correct >= best_score - 6) {
+            grade = 'C';
+        } else if (num_correct >= best_score - 8) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+
+        // Output student information
+        printf("Student ID: %d, Number Correct: %d, Grade: %c\n", student_ids[i], num_correct, grade);
+    }
+
+    // Output the best score for the class
+    printf("The highest score in the class is: %d\n", best_score);
+
+    return 0;
+}
