@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main() {
+    double initial_price, total_cost = 0.0;
+    int num_accessories;
+    double sales_tax_rate, sales_tax;
+
+    // Input the initial price of the car
+    printf("Enter the initial price of the car: $");
+    scanf("%lf", &initial_price);
+
+    // Input the number of accessories
+    printf("Enter the number of accessories (0 to 10): ");
+    scanf("%d", &num_accessories);
+
+    if (num_accessories < 0) {
+        printf("Invalid number of accessories.\n");
+        return 1;
+    }
+
+    // Input the prices of each accessory
+    for (int i = 1; i <= num_accessories; i++) {
+        double accessory_price;
+        printf("Enter the price of accessory %d: $", i);
+        scanf("%lf", &accessory_price);
+        total_cost += accessory_price;
+    }
+
+    // Input the sales tax rate
+    printf("Enter the sales tax rate (in percentage): ");
+    scanf("%lf", &sales_tax_rate);
+
+    // Calculate sales tax
+    sales_tax = (initial_price + total_cost) * (sales_tax_rate / 100.0);
+
+    // Calculate the total cost including sales tax
+    total_cost += sales_tax;
+
+    // Output the total cost
+    printf("Total Cost of the Car: $%.2lf\n", total_cost);
+
+    return 0;
+}
