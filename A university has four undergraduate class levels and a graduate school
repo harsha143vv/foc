@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+#define NUM_CLASS_LEVELS 5 // Undergraduate (4 levels) + Graduate (1 level)
+#define NUM_MAJORS 7
+#define NUM_STUDENTS 1200
+
+enum ClassLevel {
+    FRESHMAN,
+    SOPHOMORE,
+    JUNIOR,
+    SENIOR,
+    GRADUATE
+};
+
+enum Major {
+    NONE,
+    MAJOR_1,
+    MAJOR_2,
+    MAJOR_3,
+    MAJOR_4,
+    MAJOR_5,
+    MAJOR_6,
+    MAJOR_7
+};
+
+int main() {
+    int class_level_counts[NUM_CLASS_LEVELS] = {0};
+    int major_counts[NUM_MAJORS] = {0};
+    int class_level_major_counts[NUM_CLASS_LEVELS][NUM_MAJORS] = {0};
+
+    // Simulated data for class levels and majors (you can input real data)
+    int class_levels[NUM_STUDENTS] = {FRESHMAN, SOPHOMORE, JUNIOR, SENIOR, GRADUATE};
+    int majors[NUM_STUDENTS] = {MAJOR_1, MAJOR_2, NONE, MAJOR_3, MAJOR_1, MAJOR_2, NONE, MAJOR_4, MAJOR_1, MAJOR_2};
+
+    // Calculate counts for class levels, majors, and class level-major combinations
+    for (int i = 0; i < NUM_STUDENTS; i++) {
+        int class_level = class_levels[i];
+        int major = majors[i];
+
+        class_level_counts[class_level]++;
+        major_counts[major]++;
+        class_level_major_counts[class_level][major]++;
+    }
+
+    // Output class level counts
+    printf("Class Level Counts:\n");
+    for (int i = 0; i < NUM_CLASS_LEVELS; i++) {
+        printf("Level %d: %d students\n", i, class_level_counts[i]);
+    }
+
+    // Output major counts
+    printf("\nMajor Counts:\n");
+    for (int i = 0; i < NUM_MAJORS; i++) {
+        printf("Major %d: %d students\n", i, major_counts[i]);
+    }
+
+    // Output class level-major counts
+    printf("\nClass Level-Major Counts:\n");
+    for (int i = 0; i < NUM_CLASS_LEVELS; i++) {
+        for (int j = 0; j < NUM_MAJORS; j++) {
+            printf("Level %d - Major %d: %d students\n", i, j, class_level_major_counts[i][j]);
+        }
+    }
+
+    return 0;
+}
